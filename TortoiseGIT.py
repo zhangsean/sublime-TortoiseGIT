@@ -12,14 +12,14 @@ class TortoiseGITCommand(sublime_plugin.WindowCommand):
 			return
 			
 		settings = sublime.load_settings('TortoiseGIT.sublime-settings')
-		tortoiseproc_path = settings.get('tortoiseproc_path')
+		tortoisegit_path = settings.get('tortoisegit_path')
 
-		if not os.path.isfile(tortoiseproc_path):
+		if not os.path.isfile(tortoisegit_path):
 			sublime.error_message(''.join(['can\'t find TortoiseGitProc.exe,',
 				' please config setting file', '\n   --sublime-TortoiseGIT']))
 			raise
 
-		proce = subprocess.Popen('"' + tortoiseproc_path + '"' +
+		proce = subprocess.Popen('"' + tortoisegit_path + '"' +
 			' /command:' + cmd + ' /path:"%s"' % dir , stdout=subprocess.PIPE)
 
 		# This is required, cause of ST must wait TortoiseGIT update then revert
