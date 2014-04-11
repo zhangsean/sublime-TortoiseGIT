@@ -11,6 +11,7 @@ by setting property "tortoisegit_path" in your TortoiseSVN.sublime-settings file
 The default key bindings are 
 - [ctrl+alt+v then c] : commit changes to local repo
 - [ctrl+alt+v then p] : push changes to remote repo
+- [ctrl+alt+b] : open git bash from the current working directory
 
 You can also call TortoiseGIT commands when right-clicking folders or files in the side bar.
 
@@ -34,5 +35,6 @@ The default setting is:
     {
         // Auto close update dialog when no errors, conflicts and merges
         "autoCloseUpdateDialog": false,
-        "tortoisegit_path": "C:\\Program Files\\TortoiseSVN\\bin\\TortoiseProc.exe"
+        "tortoisegit_path": "C:\\Program Files\\TortoiseSVN\\bin\\TortoiseProc.exe",
+				"gitbash_path": "C:\\Program Files (x86)\\Git\\bin\\sh.exe"
     }

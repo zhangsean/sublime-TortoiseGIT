@@ -1,0 +1,7 @@
+Sublime-TortoiseSVN 1.0.1 changelog
+=============================
+
+NEW FEATURES
+------------
+
+- Add "GIT Bash"
