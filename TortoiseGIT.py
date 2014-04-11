@@ -56,18 +56,28 @@ class MutatingTortoiseGITCommand(TortoiseGITCommand):
 		self.view.window().run_command('goto_line',{'line':self.lastLine})
 
 
-class GitUpdateCommand(MutatingTortoiseGITCommand):
+class GitCloneCommand(MutatingTortoiseGITCommand):
 	def run(self, paths=None):
 		settings = sublime.load_settings('TortoiseGIT.sublime-settings')
-		closeonend = ('3' if True == settings.get('autoCloseUpdateDialog')
-			else '0')
-		MutatingTortoiseGITCommand.run(self, 'update /closeonend:' + closeonend, 
-			paths)
+		closeonend = ('3' if True == settings.get('autoCloseUpdateDialog') else '0')
+		MutatingTortoiseGITCommand.run(self, 'clone /closeonend:' + closeonend, paths)
 
 
 class GitCommitCommand(TortoiseGITCommand):
 	def run(self, paths=None):
 		TortoiseGITCommand.run(self, 'commit /closeonend:3', paths)
+
+class GitCheckoutCommand(TortoiseGITCommand):
+	def run(self, paths=None):
+		TortoiseGITCommand.run(self, 'checkout /closeonend:3', paths)
+
+class GitPushCommand(TortoiseGITCommand):
+	def run(self, paths=None):
+		TortoiseGITCommand.run(self, 'push /closeonend:3', paths)
+
+class GitPullCommand(TortoiseGITCommand):
+	def run(self, paths=None):
+		TortoiseGITCommand.run(self, 'pull /closeonend:3', paths)
 
 
 class GitRevertCommand(MutatingTortoiseGITCommand):
