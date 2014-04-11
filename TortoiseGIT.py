@@ -4,7 +4,7 @@ import os
 import os.path
 import subprocess
 
-
+# Borrowed from http://bit.ly/1iDl6f6
 def current_dir(window):
     """
     Return the working directory in which the window's commands should run.
