@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"name": "TortoiseGIT",
+			"follow_symlinks": true,
+			"path": "."
+		}
+	]
+}

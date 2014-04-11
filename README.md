@@ -1,3 +1,11 @@
+TortoiseSVN for Sublime Text
+=============
+This is an adaptation of the brilliantly simple [sublime-TortoiseSVN](https://github.com/dexbol/sublime-TortoiseSVN).
+
+
+ORIGINAL README
+=============
+
 Sublime-TortoiseSVN
 =============
 sublime-TortoiseSVN is a tiny and simple plugin for [Sublime Text](http://www.sublimetext.com) .

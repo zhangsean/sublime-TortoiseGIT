@@ -1,8 +1,8 @@
 [
-	{ "keys": ["alt+u"], "command": "svn_update" }
-	,{ "keys": ["alt+c"], "command": "svn_commit" }
-	,{ "keys": ["alt+r"], "command": "svn_revert" }
+	{ "keys": ["alt+u"], "command": "git_update" }
+	,{ "keys": ["alt+c"], "command": "git_commit" }
+	,{ "keys": ["alt+r"], "command": "git_revert" }
 
-	// ,{ "keys": ["alt+l"], "command": "svn_log" }
-	// ,{ "keys": ["alt+d"], "command": "svn_diff" }
+	// ,{ "keys": ["alt+l"], "command": "git_log" }
+	// ,{ "keys": ["alt+d"], "command": "git_diff" }
 ]

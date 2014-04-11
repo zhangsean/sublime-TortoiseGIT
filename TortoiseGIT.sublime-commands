@@ -1,0 +1,6 @@
+[
+	{ "caption": "TortoiseGIT: Update", "command": "git_update" },
+	{ "caption": "TortoiseGIT: Commit", "command": "git_commit" },
+	{ "caption": "TortoiseGIT: Revert", "command": "git_revert" },
+	{ "caption": "TortoiseGIT: Log", "command": "git_log" }
+]
