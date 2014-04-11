@@ -19,7 +19,7 @@ class TortoiseGITCommand(sublime_plugin.WindowCommand):
 				' please config setting file', '\n   --sublime-TortoiseGIT']))
 			raise
 
-		proce = subprocess.Popen('"' + tortoiseproc_path + '"' + 
+		proce = subprocess.Popen('"' + tortoiseproc_path + '"' +
 			' /command:' + cmd + ' /path:"%s"' % dir , stdout=subprocess.PIPE)
 
 		# This is required, cause of ST must wait TortoiseGIT update then revert
@@ -38,6 +38,27 @@ class TortoiseGITCommand(sublime_plugin.WindowCommand):
 
 		return path
 
+
+class TortoiseGITBashCommand(TortoiseGITCommand):
+	def run(self, paths=None, isHung=False):
+		dir = self.getPath(paths)
+
+		if not dir:
+			return
+			
+		settings = sublime.load_settings('TortoiseGIT.sublime-settings')
+		gitbash_path = settings.get('gitbash_path')
+
+		if not os.path.isfile(gitbash_path):
+			sublime.error_message(''.join(['can\'t find sh.exe (gitbash),',
+				' please config setting file', '\n   --sublime-TortoiseGIT']))
+			raise
+
+			sublime.error_message('"' + gitbash_path + '"')
+		
+		# "C:\Program Files (x86)\Git\bin\sh.exe" --login -i
+		proce = subprocess.Popen('"' + gitbash_path + '" --login -i' + 
+			' /path:"%s"' % dir , stdout=subprocess.PIPE)
 
 class MutatingTortoiseGITCommand(TortoiseGITCommand):
 	def run(self, cmd, paths=None):
@@ -78,6 +99,10 @@ class GitPushCommand(TortoiseGITCommand):
 class GitPullCommand(TortoiseGITCommand):
 	def run(self, paths=None):
 		TortoiseGITCommand.run(self, 'pull /closeonend:3', paths)
+
+class GitBashCommand(TortoiseGITBashCommand):
+	def run(self, paths=None):
+		TortoiseGITBashCommand.run(self, paths)
 
 
 class GitRevertCommand(MutatingTortoiseGITCommand):

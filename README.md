@@ -6,7 +6,7 @@ Usage
 ============
 Install it using [Sublime Package Control](http://wbond.net/sublime_packages/package_control).
 If TortoiseSVN is not installed at `C:\\Program Files\\TortoiseGIT\\bin\\TortoiseGitProc.exe`, specify the correct path
-by setting property "tortoiseproc_path" in your TortoiseSVN.sublime-settings file. 
+by setting property "tortoisegit_path" in your TortoiseSVN.sublime-settings file. 
 
 The default key bindings are 
 - [ctrl+alt+v then c] : commit changes to local repo
@@ -34,5 +34,5 @@ The default setting is:
     {
         // Auto close update dialog when no errors, conflicts and merges
         "autoCloseUpdateDialog": false,
-        "tortoiseproc_path": "C:\\Program Files\\TortoiseSVN\\bin\\TortoiseProc.exe"
+        "tortoisegit_path": "C:\\Program Files\\TortoiseSVN\\bin\\TortoiseProc.exe"
     }
