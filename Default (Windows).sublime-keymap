@@ -1,8 +1,4 @@
 [
-	{ "keys": ["alt+u"], "command": "git_update" }
-	,{ "keys": ["alt+c"], "command": "git_commit" }
-	,{ "keys": ["alt+r"], "command": "git_revert" }
-
-	// ,{ "keys": ["alt+l"], "command": "git_log" }
-	// ,{ "keys": ["alt+d"], "command": "git_diff" }
+	{ "keys": ["ctrl+alt+v","ctrl+alt+c"], "command": "git_commit" },
+	{ "keys": ["ctrl+alt+v","ctrl+alt+p"], "command": "git_push" }
 ]
