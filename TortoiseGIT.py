@@ -4,9 +4,64 @@ import os
 import os.path
 import subprocess
 
+
+def current_dir(window):
+    """
+    Return the working directory in which the window's commands should run.
+
+    In the common case when the user has one folder open, return that.
+    Otherwise, return one of the following (in order of preference):
+        1) One of the open folders, preferring a folder containing the active
+           file.
+        2) The directory containing the active file.
+        3) The user's home directory.
+    """
+    folders = window.folders()
+    if len(folders) == 1:
+        return folders[0]
+    else:
+        active_view = window.active_view()
+        active_file_name = active_view.file_name() if active_view else None
+        if not active_file_name:
+            return folders[0] if len(folders) else os.path.expanduser("~")
+        for folder in folders:
+            if active_file_name.startswith(folder):
+                return folder
+        return os.path.dirname(active_file_name)
+
+
+class TortoiseGITBashCommand(sublime_plugin.WindowCommand):
+	def run(self, paths=None, isHung=False):
+		dir = current_dir(self.window)
+
+		if not dir:
+			return
+			
+		settings = sublime.load_settings('TortoiseGIT.sublime-settings')
+		gitbash_path = settings.get('gitbash_path')
+
+		if not os.path.isfile(gitbash_path):
+			sublime.error_message(''.join(['can\'t find sh.exe (gitbash),',
+				' please config setting file', '\n   --sublime-TortoiseGIT']))
+			raise
+
+		command = 'cd %s & "%s" --login -i' % (dir, gitbash_path)
+		os.system(command)
+
+	def getPath(self, paths):
+		path = None
+		if paths:
+			path = '*'.join(paths)
+		else:
+			view = sublime.active_window().active_view()
+			path = view.file_name() if view else None
+
+		return path
+
+
 class TortoiseGITCommand(sublime_plugin.WindowCommand):
 	def run(self, cmd, paths=None, isHung=False):
-		dir = self.getPath(paths)
+		dir = current_dir(self.window)
 
 		if not dir:
 			return
@@ -28,37 +83,6 @@ class TortoiseGITCommand(sublime_plugin.WindowCommand):
 		if isHung:
 			proce.communicate()
 
-	def getPath(self, paths):
-		path = None
-		if paths:
-			path = '*'.join(paths)
-		else:
-			view = sublime.active_window().active_view()
-			path = view.file_name() if view else None
-
-		return path
-
-
-class TortoiseGITBashCommand(TortoiseGITCommand):
-	def run(self, paths=None, isHung=False):
-		dir = self.getPath(paths)
-
-		if not dir:
-			return
-			
-		settings = sublime.load_settings('TortoiseGIT.sublime-settings')
-		gitbash_path = settings.get('gitbash_path')
-
-		if not os.path.isfile(gitbash_path):
-			sublime.error_message(''.join(['can\'t find sh.exe (gitbash),',
-				' please config setting file', '\n   --sublime-TortoiseGIT']))
-			raise
-
-			sublime.error_message('"' + gitbash_path + '"')
-		
-		# "C:\Program Files (x86)\Git\bin\sh.exe" --login -i
-		proce = subprocess.Popen('"' + gitbash_path + '" --login -i' + 
-			' /path:"%s"' % dir , stdout=subprocess.PIPE)
 
 class MutatingTortoiseGITCommand(TortoiseGITCommand):
 	def run(self, cmd, paths=None):
@@ -104,7 +128,7 @@ class GitBashCommand(TortoiseGITBashCommand):
 	def run(self, paths=None):
 		TortoiseGITBashCommand.run(self, paths)
 
-
+"""
 class GitRevertCommand(MutatingTortoiseGITCommand):
 	def run(self, paths=None):
 		MutatingTortoiseGITCommand.run(self, 'revert', paths)
@@ -130,3 +154,4 @@ class GitBlameCommand(TortoiseGITCommand):
 	def is_visible(self, paths=None):
 		file = self.getPath(paths)
 		return os.path.isfile(file) if file else False
+"""

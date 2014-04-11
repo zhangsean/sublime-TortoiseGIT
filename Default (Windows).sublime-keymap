@@ -1,4 +1,5 @@
 [
-	{ "keys": ["ctrl+alt+v","ctrl+alt+c"], "command": "git_commit" },
-	{ "keys": ["ctrl+alt+v","ctrl+alt+p"], "command": "git_push" }
+	{ "keys": ["ctrl+alt+c","ctrl+alt+c"], "command": "git_commit" },
+	{ "keys": ["ctrl+alt+c","ctrl+alt+p"], "command": "git_push" },
+	{ "keys": ["ctrl+alt+b"], "command": "git_bash" }
 ]
