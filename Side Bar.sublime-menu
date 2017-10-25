@@ -1,9 +1,15 @@
 [
 	{ "caption": "-" },
-	//{ "caption": "GIT Clone", "command": "git_clone", "args": {"paths":[]}},
-	{ "caption": "GIT Commit", "command": "git_commit", "args": {"paths":[]}},
-	{ "caption": "GIT Pull", "command": "git_pull", "args": {"paths":[]}},
-	{ "caption": "GIT Push", "command": "git_push", "args": {"paths":[]}},
+	{ "caption": "GIT 拉取", "command": "git_pull", "args": {"paths":[]}},
+	{ "caption": "GIT 提交", "command": "git_commit", "args": {"paths":[]}},
+	{ "caption": "GIT 推送", "command": "git_push", "args": {"paths":[]}},
+	{ "caption": "GIT 切换", "command": "git_switch", "args": {"paths":[]}},
 	{ "caption": "GIT Bash", "command": "git_bash", "args": {"paths":[]}},
+	{ "caption": "GIT", "children": [
+		{ "caption": "GIT 获取", "command": "git_fetch", "args": {"paths":[]}},
+		{ "caption": "GIT 日志", "command": "git_log", "args": {"paths":[]}},
+		{ "caption": "GIT 状态", "command": "git_status", "args": {"paths":[]}},
+		{ "caption": "GIT 克隆", "command": "git_clone", "args": {"paths":[]}},
+	]},
 	{ "caption": "-", "id": "end" }
 ]

@@ -1,6 +1,11 @@
 {
-	// Auto close update dialog when no errors, conflicts and merges
-	"autoCloseUpdateDialog": false,
-	"tortoisegit_path": "C:\\Program Files\\TortoiseGIT\\bin\\TortoiseGITProc.exe",
-	"gitbash_path": "C:\\Program Files (x86)\\Git\\bin\\sh.exe"
+	/**
+	 * To close the (git.exe) progress dialog at the end of a command automatically without using the permanent setting you can pass the /closeonend parameter.
+	 * /closeonend:0 Close manually
+	 * /closeonend:1 Auto-close if no further options are available
+	 * /closeonend:2 Auto-close if no errors
+	 */
+	"close_on_end": 0,
+	"tortoisegit_proc_path": "C:\\Program Files\\TortoiseGIT\\bin\\TortoiseGITProc.exe",
+	"git_bash_path": "C:\\Program Files\\Git\\bin\\sh.exe"
 }
