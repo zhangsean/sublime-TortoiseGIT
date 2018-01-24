@@ -148,6 +148,11 @@ class GitDiffCommand(TortoiseGitCommand):
         TortoiseGitCommand.run(self, 'diff', paths)
 
 
+class GitMergeCommand(TortoiseGitCommand):
+    def run(self, paths=None):
+        TortoiseGitCommand.run(self, 'merge', paths)
+
+
 class GitBlameCommand(TortoiseGitCommand):
     def run(self, paths=None):
         view = sublime.active_window().active_view()
